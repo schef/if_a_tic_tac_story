@@ -1,0 +1,62 @@
+!% -~S
+!% $OMIT_UNUSED_ROUTINES=1
+
+Constant Story      "The Tic Tac Story^";
+Constant Headline   "based on a real life event^";
+Constant DEBUG;
+Constant INITIAL_LOCATION_VALUE round_room;
+
+Include "globals.h";
+Include "puny.h";
+
+Object round_room "round room"
+	with
+		initial "You're in a round room but your visibility is suffocated by the bright light. All of a sudden light starts to flicker and shuts down freeing you of its hold. You fall and the light comes on again, but it is weaker than before. You try to feel the surface of the floor with your hands. Floor feels warm and smooth. You're slowly coming to your senses. You cannot see any source of light but the room is lightened up.^",
+		description "A generic round room.",
+	has light;
+
+Object -> switch_panel "switch panel"
+	with
+		name 'panel' 'switch',
+		initial "There is a switch panel on the wall.",
+		description "It is a ordinay alien switch panel. Do you dare to push it?",
+		before [; 
+			Push: 
+				move round_desk to parent(self);
+				"A round desk comes out of the floor floating in mid air.";
+		];
+
+Object round_desk "round desk"
+	with
+    name 'desk' 'table' 'round desk',
+		description [;
+			print "The round desk is cold and metal.";
+			if(goggles in nothing) move goggles to self;
+			if(belt in nothing) move belt to self;
+			if(PrintContents(" On the desk you can see ", self)) ".";
+		  "";
+	    ],
+    has supporter;
+
+Object goggles "pair of goggles"
+	with
+		name 'goggles',
+		description "The pair of goggles look like Scifidelity Orchestra's signature glasses.";
+
+Object belt "belt"
+	with
+		name 'belt',
+		description "Belt in some kind of force field",
+    before [;
+      Take:
+        "Don't need it.";
+    ];
+
+Object control_panel "control panel"
+	with
+		name 'control' 'panel',
+		description "Control panel with buttons";
+
+[Initialise;
+	print "Few years ago ... in a place so close to yours.^In the middle of the night, a man is awakened by a very bright light shining through the window. Some kind of force locked him in place and he was as if paralyzed. The light lifted him from the bed and then through a closed window pulled him into the white tic tac shaped flying object. While the body was floating towards the window he saw his own body lying peacefully on the bed. He feels horrified as he is not sure what is happening. Cold sweat is slowly dripping down his face while the light is pulling him closer and closer into the flying object. Light pulls him in a round room while he is mesmerized by the size of it. In the distance he hears a strange murmur.^";
+];

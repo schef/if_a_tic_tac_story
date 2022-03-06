@@ -1,0 +1,6 @@
+[submodule "PunyInform"]
+	path = PunyInform
+	url = https://github.com/johanberntsson/PunyInform.git
+[submodule "Inform6"]
+	path = Inform6
+	url = https://github.com/DavidKinder/Inform6.git
