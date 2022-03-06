@@ -6,7 +6,7 @@ This is an Interactive Fiction written in Inform6 using PunyInform library.
 
 The story is written by Josip Turcic and Ruben Horvat
 
-## Programminc
+## Programming
 
 Stjepan Horvat
 
